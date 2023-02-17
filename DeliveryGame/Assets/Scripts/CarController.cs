@@ -10,11 +10,13 @@ public class CarController : MonoBehaviour
     // I plan to come back and heavily modify it later when we're further along in development and more pieces, such as an acutal car with wheels is implemented to add colliders and implement more variables into the speed/acceleration calculations
 
     private float speed = 25.0f;
-    private float turnspeed = 15.0f;
-    //private float acceleration = 0.0f;
-    //private float mass = 0.0f;
-    //private float topSpeed = 0.0f;
-    //private float breakTorque = 0.0f;
+    private float turnspeed = 25.0f;
+    private float velocity = 0.0f;
+    private float acceleration = 1.0f;
+    private float mass = 1.5f;
+    private float topSpeed = 25.0f;
+    private float reverseTopSpeed = 5.0f;
+    private float breakTorque = 1.0f;
 
     private Rigidbody rb;
 
@@ -34,9 +36,25 @@ public class CarController : MonoBehaviour
     void Move() {
         // forward and backward
         if(Input.GetKey(KeyCode.W)) {
-            rb.AddRelativeForce(new Vector3(Vector3.forward.x, 0, Vector3.forward.z) * speed);
+            if (velocity < topSpeed)
+            {
+                velocity += acceleration;
+            }
+            else if(velocity == topSpeed)
+            {
+                velocity += 0.0f;
+            }
+            else
+            {
+                velocity -= mass;
+            }
+            rb.AddRelativeForce(new Vector3(Vector3.forward.x, 0, Vector3.forward.z) * velocity);
         }
         else if(Input.GetKey(KeyCode.S)) {
+            if (velocity >= reverseTopSpeed)
+            {
+                velocity -= breakTorque;
+            }
             rb.AddRelativeForce(new Vector3(Vector3.forward.x, 0, Vector3.forward.z) * -speed);        
         }
         Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
@@ -46,11 +64,16 @@ public class CarController : MonoBehaviour
 
     void Turn() {
         //Turning
-        if(Input.GetKey(KeyCode.D)) {
-            rb.AddTorque(Vector3.up * turnspeed);
-        }
-        else if(Input.GetKey(KeyCode.A)) {
-            rb.AddTorque(-Vector3.up * turnspeed);
+        if (velocity > 0.0f)
+        {
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddTorque(Vector3.up * turnspeed);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddTorque(-Vector3.up * turnspeed);
+            }
         }
     }
 }
