@@ -10,9 +10,8 @@ public class CameraFollow : MonoBehaviour
     public float rotSmoothing;
     public Transform player;
 
-    public float mouseSens = 4.0f;
-
-    private Vector3 offset;
+    public float mouseSens = 1.0f;
+    public float clampAngle = 80.0f;
 
     //For this Version used Cyber Chroma's camera follow script:https://www.youtube.com/watch?v=Ul01SxwPIvk
     // No idea if we'll keep this follow script or come back and change it later on.
@@ -20,7 +19,7 @@ public class CameraFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(player.position.x, player.position.y, player.position.z+5.0f);
+        
     }
 
     // Update is called once per frame
@@ -34,18 +33,8 @@ public class CameraFollow : MonoBehaviour
         }
         else
         {
-            offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * mouseSens, Vector3.up) * offset;
+            
 
-            transform.position = player.position + offset;
-            transform.LookAt(player.position);
-            //if(Input.GetAxis("Mouse X") > 0)
-            //{
-            //    transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSens, 0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSens);
-            //}
-            //else
-            //{
-            //    transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSens, 0.0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSens);
-            //}
         }
     }
 }
