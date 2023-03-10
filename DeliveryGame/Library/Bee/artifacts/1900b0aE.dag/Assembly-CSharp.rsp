@@ -355,7 +355,12 @@
 "Assets/Scripts/Camera.cs"
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/CarController.cs"
+"Assets/Scripts/CarControllerBackup.cs"
 "Assets/Scripts/CarInfo.cs"
+"Assets/Scripts/HUD.cs"
+"Assets/Scripts/MenuUI.cs"
+"Assets/Scripts/QuestUI.cs"
+"Assets/Scripts/UpgradeUI.cs"
 -langversion:9.0
 
 /deterministic
