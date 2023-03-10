@@ -7,9 +7,9 @@ using Random = System.Random;
 
 public class WorldGenerationConstants
 {
-    public static int chunkSize = 128; // width and height of a chunk in world units. multiple of roadLength.
-    public static float roadLength = 16; // distance between the center of 2 intersections in world units
-    public static float roadWidth = 2; // width of a road in world units
+    public static int chunkSize = 640; // width and height of a chunk in world units. multiple of roadLength.
+    public static float roadLength = 80; // distance between the center of 2 intersections in world units
+    public static float roadWidth = 10; // width of a road in world units
 
     public static int buildingsPerRoad = 2;
     public static float buildingWidth = (roadLength - roadWidth) / buildingsPerRoad; // width (and length) of a building in world units
