@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:DeliveryGame/Assets/Models/Buildings/Blender WIP.meta
 guid: 1dadc0431aace3a499e9c8c87b7a1308
+========
+guid: 35911dc6f864fe1458512c20ec3ed6d2
+>>>>>>>> main:DeliveryGame/Assets/Models/Vehicles.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
