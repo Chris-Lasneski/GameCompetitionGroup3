@@ -364,6 +364,13 @@
 "Assets/Scripts/QuestUI.cs"
 "Assets/Scripts/SettingsUI.cs"
 "Assets/Scripts/UpgradeUI.cs"
+"Assets/Scripts/World Generation/ChunkData.cs"
+"Assets/Scripts/World Generation/Map.cs"
+"Assets/Scripts/World Generation/Rendering/ItemBehaviors/BuildingBehavior.cs"
+"Assets/Scripts/World Generation/Rendering/ItemBehaviors/IntersectionBehavior.cs"
+"Assets/Scripts/World Generation/Rendering/ItemBehaviors/RoadBehavior.cs"
+"Assets/Scripts/World Generation/Rendering/WorldRenderer.cs"
+"Assets/Scripts/World Generation/WorldGenerationConstants.cs"
 -langversion:9.0
 
 /deterministic
