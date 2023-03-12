@@ -352,6 +352,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/playerinfo.cs"
 "Assets/Scripts/Camera.cs"
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/CarController.cs"
@@ -359,7 +360,9 @@
 "Assets/Scripts/CarInfo.cs"
 "Assets/Scripts/HUD.cs"
 "Assets/Scripts/MenuUI.cs"
+"Assets/Scripts/PlayerInfo.cs"
 "Assets/Scripts/QuestUI.cs"
+"Assets/Scripts/SettingsUI.cs"
 "Assets/Scripts/UpgradeUI.cs"
 -langversion:9.0
 

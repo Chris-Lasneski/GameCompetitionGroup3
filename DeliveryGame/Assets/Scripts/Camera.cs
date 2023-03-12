@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    //public Transform player;
-    //public float pLerp = 0.02f;
-    //public float rLerp = 0.01f;
-
     public GameObject player;
     public GameObject cameraPivot;
     public float yOffset = 1f;
-    public float sensitivity = 10f;
+    public float sensitivity = 0f;
     public Camera cam;
 
     public float scrollSens = 5f;
@@ -27,8 +23,7 @@ public class Camera : MonoBehaviour
     private RaycastHit _camHit;
     private Vector3 _camDist;
 
-    private bool _enabled = true;
-    private bool paused = false;
+    private bool paused;
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +38,14 @@ public class Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        sensitivity = GameObject.FindWithTag("Player").GetComponent<SettingsUI>().sensitivityValue;
+        paused = GameObject.FindWithTag("Player").GetComponent<MenuUI>().paused;
+
+        if (paused)
         {
-            _enabled = !_enabled;
-            paused = !paused;
             Cursor.visible = paused;
         }
-        if (_enabled)
+        else
         {
             cameraPivot.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + yOffset, player.transform.position.z);
 
@@ -92,9 +88,6 @@ public class Camera : MonoBehaviour
             {
                 cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, cam.transform.localPosition.y, -1f);
             }
-
-            //transform.position = Vector3.Lerp(transform.position, player.position, pLerp);
-            //transform.rotation = Quaternion.Lerp(transform.rotation, player.rotation, pLerp);
         }
     }
 }
