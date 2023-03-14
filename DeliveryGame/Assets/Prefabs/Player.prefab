@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 5382080494413139451}
   - component: {fileID: 5564835935900707368}
   - component: {fileID: 5564835935900707351}
-  - component: {fileID: 5564835935900707350}
+  - component: {fileID: 4172733307817736763}
   m_Layer: 0
   m_Name: Sedan
   m_TagString: Untagged
@@ -321,7 +321,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1236715, y: 1.8020816, z: 5.219936}
   m_Center: {x: -0.0076544285, y: 1.1954937, z: 0.049836874}
---- !u!114 &5564835935900707350
+--- !u!114 &4172733307817736763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,12 +341,12 @@ MonoBehaviour:
   frontRightWheelTransform: {fileID: 4984369689535767974}
   backLeftWheelTransform: {fileID: 2590571848415553412}
   backRightWheelTransform: {fileID: 88391969647882696}
-  acceleration: 400
-  maxSteeringAngle: 35
+  acceleration: 450
+  maxSteeringAngle: 40
   brakeTorque: 15000
   isFrontDrive: 1
-  rb: {fileID: 5564835935900707368}
-  com: {x: 0, y: 0.75, z: 0.35}
+  rb: {fileID: 0}
+  com: {x: 0, y: 0, z: 0}
 --- !u!1 &5249939727237918179
 GameObject:
   m_ObjectHideFlags: 0
