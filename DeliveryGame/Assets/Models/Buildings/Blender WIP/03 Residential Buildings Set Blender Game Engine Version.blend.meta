@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: f250aabf33d3ae64bb7edbbb4ef56e2b
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 4215616346518037044
+    second: 09_civilian househotel
   externalObjects: {}
   materials:
     materialImportMode: 2
