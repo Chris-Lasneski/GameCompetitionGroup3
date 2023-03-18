@@ -33,7 +33,7 @@ public class Chunk {
 public class ChunkData {
     public Vector2Int chunkPos { get; private set; } // the center of the chunk is at chunkPos * chunkSize.
 
-    public List<Vector2> intersections { get; private set; } // list of intersections in world units
+    public List<IntersectionInfo> intersections { get; private set; } // list of intersections in world units
     public List<RoadInfo> roads { get; private set; } // list of roads. roads are straight lines between two intersections
     public List<BuildingInfo> buildings { get; private set; } //list of buildings
 
@@ -43,7 +43,7 @@ public class ChunkData {
 
     public ChunkData(
         Vector2Int chunkPos, 
-        List<Vector2> intersections, 
+        List<IntersectionInfo> intersections, 
         List<RoadInfo> roads, 
         List<RoadInfo>[] externalRoads,
         List<BuildingInfo> buildings,
@@ -74,5 +74,10 @@ public class BuildingInfo {
     public Vector2 pos;
     public float rot;
     public int buildingType;
+}
+
+public class IntersectionInfo {
+    public Vector2 pos;
+    public int intersectionType;
 }
 

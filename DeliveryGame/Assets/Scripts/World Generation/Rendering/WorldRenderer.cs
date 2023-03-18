@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class WorldRenderer : MonoBehaviour
 {
-    public GameObject intersectionPfb;
+    public GameObject[] intersectionPfb;
+    public int[] intersectionWeights;
     public GameObject roadPfb;
     public GameObject emptyPfb;
     public GameObject[] buildingPfb;
@@ -20,7 +21,7 @@ public class WorldRenderer : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        Map.initMap(buildingWeights);
+        Map.initMap(buildingWeights, intersectionWeights);
 
         playerBody = player.GetComponent<Rigidbody>();
         chunkPos = new Vector2Int(
@@ -88,7 +89,7 @@ public class WorldRenderer : MonoBehaviour
         chunk.parent = Instantiate(emptyPfb, transform);
 
         //add intersections
-        foreach (Vector2 intersection in data.intersections) {
+        foreach (IntersectionInfo intersection in data.intersections) {
             chunk.intersectionBehaviors.Add(placeIntersection(intersection, chunk.parent.transform));
         }
 
@@ -143,10 +144,10 @@ public class WorldRenderer : MonoBehaviour
         return ret.AddComponent<RoadBehavior>();
     }
 
-    private IntersectionBehavior placeIntersection(Vector2 n, Transform t) {
-        Vector3 pos = new Vector3(n.x, 0, n.y);
+    private IntersectionBehavior placeIntersection(IntersectionInfo i, Transform t) {
+        Vector3 pos = new Vector3(i.pos.x, 0, i.pos.y);
 
-        GameObject ret = Instantiate(intersectionPfb, pos, new Quaternion(), t);
+        GameObject ret = Instantiate(intersectionPfb[i.intersectionType], pos, new Quaternion(), t);
 
         return ret.AddComponent<IntersectionBehavior>();
     }

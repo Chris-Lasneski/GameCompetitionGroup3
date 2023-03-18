@@ -15,6 +15,7 @@ public class WorldGenerationConstants
     public static float buildingWidth = (roadLength - roadWidth) / buildingsPerRoad; // width (and length) of a building in world units
     public static int chunkBuildingWidth = (chunkSize / (int)roadLength) * buildingsPerRoad;
     public static int buildingPermSize = chunkBuildingWidth + 1;
+    public static int intersectionPermSize = (chunkSize / (int)roadLength) + 1;
 }
 
 public class Math {
