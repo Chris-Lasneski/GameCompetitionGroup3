@@ -28,11 +28,12 @@ public class CarController : MonoBehaviour
     public float brakeTorque;
     public bool isFrontDrive;
     private float maxSpeed = 36f;
+
     // modifiers from upgrades, will change when we can draw from upgrade list.
-    private float maxSpeedModifier = 7f;
-    private float brakeTorqueModifier = 7500f;
+    public float maxSpeedModifier = 0f;
+    public float brakeTorqueModifier = 0f;
     // will ned to look into wheel traction, currently doesn't make the car accelrate much faster as much as making the wheels spin faster in a burnout
-    private float accelerationModifier = 400f;
+    public float accelerationModifier = 400f;
 
     private Vector3 velocity;
     private Vector3 localVel;
