@@ -21,7 +21,7 @@ public class SpeedCameraBehavior : MonoBehaviour
         GameObject go = other.gameObject;
         CarController controller = go.GetComponent<CarController>();
         if(controller != null) {
-            float speed = controller.rb.velocity.magnitude;
+            float speed = 2.237f * controller.rb.velocity.magnitude;
             if (speed > LawEnforcementConstants.CameraSpeedLimit && !hasTicketed) {
                 LawEnforcementController.reportTicket(speed);
                 hasTicketed = true;

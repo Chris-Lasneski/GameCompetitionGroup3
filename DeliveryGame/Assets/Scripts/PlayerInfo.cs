@@ -49,6 +49,7 @@ public class PlayerInfo : MonoBehaviour
     void Start()
     {
         gameObject.tag = "Player";
+        LawEnforcementController.playerInfo = this;
 
         //upgradeUI = GetComponent<UpgradeUI>();
         //items = upgradeUI.items;
