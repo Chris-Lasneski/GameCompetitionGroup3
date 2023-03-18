@@ -425,6 +425,14 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 281901687}
+    - target: {fileID: 4172733307817736763, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
+      propertyPath: brakeTorque
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172733307817736763, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
+      propertyPath: acceleration
+      value: 850
+      objectReference: {fileID: 0}
     - target: {fileID: 5382080494413139451, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -463,11 +471,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5564835934697818841, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumSlip
-      value: 0.2
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5564835934697818841, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
       propertyPath: m_ForwardFriction.m_AsymptoteValue
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564835934697818841, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
+      propertyPath: m_SidewaysFriction.m_AsymptoteSlip
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5564835934697818841, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumValue
