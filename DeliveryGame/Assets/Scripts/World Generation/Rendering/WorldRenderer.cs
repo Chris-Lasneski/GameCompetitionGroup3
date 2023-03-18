@@ -158,7 +158,7 @@ public class WorldRenderer : MonoBehaviour
     private BuildingBehavior placeBuilding(BuildingInfo b, Transform t) {
         Vector3 pos = new Vector3(b.pos.x, 0, b.pos.y);
 
-        GameObject ret = Instantiate(buildingPfb[b.buildingType], pos, new Quaternion(), t);
+        GameObject ret = Instantiate(buildingPfb[b.buildingType], pos, Quaternion.Euler(0, b.rot, 0), t);
 
         return ret.AddComponent<BuildingBehavior>();
     }
