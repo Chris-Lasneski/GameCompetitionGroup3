@@ -72,6 +72,7 @@ public class RoadInfo {
 
 public class BuildingInfo {
     public Vector2 pos;
+    public float rot;
     public int buildingType;
 }
 

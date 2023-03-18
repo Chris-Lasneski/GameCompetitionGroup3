@@ -222,11 +222,19 @@ public class Map {
         externalBuildings[7].Add(getBuilding(minX - 2, maxY + 1, externalPerm));
     }
 
+    private static float[][] rotation = new float[][] {
+        new float[] {0, 90},
+        new float[] {270, 180}
+    };
+
     private static BuildingInfo getBuilding(int x, int y, int[][] perm) {
         BuildingInfo buildingInfo = new BuildingInfo();
 
         int displaceX = Math.mod(x, buildingsPerRoad);
         int displaceY = Math.mod(y, buildingsPerRoad);
+
+        int rotXInd = displaceX % 2;
+        int rotYInd = displaceY % 2;
 
         buildingInfo.pos = new Vector2(
             ((x - displaceX) / 2) * roadLength + buildingOffset[displaceX],
@@ -234,6 +242,8 @@ public class Map {
         );
 
         buildingInfo.buildingType = getBuildingFromPerm(x, y, perm);
+
+        buildingInfo.rot = rotation[rotXInd][rotYInd];
 
         return buildingInfo;
     }
