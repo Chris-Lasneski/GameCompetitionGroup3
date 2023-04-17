@@ -18,6 +18,7 @@ public class Map {
     public static Dictionary<int, Vector2Int> externalIndexToDirection = new Dictionary<int, Vector2Int>();
 
     private static List<int> buildingChoices = new List<int>();
+    private static bool[] isMissionBuilding;
     private static int buildingCount;
     private static List<int> intersectionChoices = new List<int>();
     private static int intersectionCount;
@@ -32,7 +33,7 @@ public class Map {
     private static int buildingPermSize = WorldGenerationConstants.buildingPermSize;
     private static int intersectionPermSize = WorldGenerationConstants.intersectionPermSize;
 
-    public static void initMap(int[] buildingWeights, int[] intersectionWeights) {
+    public static void initMap(int[] buildingWeights, int[] intersectionWeights, bool[] isMissionBuilding) {
         directionToExternalIndex.Clear();
         directionToExternalIndex.Add(new Vector2Int( 0,  1), 0);
         directionToExternalIndex.Add(new Vector2Int( 1,  1), 1);
@@ -53,7 +54,9 @@ public class Map {
         externalIndexToDirection.Add(6, new Vector2Int(-1,  0));
         externalIndexToDirection.Add(7, new Vector2Int(-1,  1));
 
-        for(int i = 0; i < buildingWeights.Length; i++) {
+        Map.isMissionBuilding = isMissionBuilding;
+
+        for (int i = 0; i < buildingWeights.Length; i++) {
             for(int j = 0; j < buildingWeights[i]; j++) {
                 buildingChoices.Add(i);
             }
@@ -76,12 +79,13 @@ public class Map {
         List<RoadInfo> roads = new List<RoadInfo>();
         List<RoadInfo>[] externalRoads = new List<RoadInfo>[8];
         List<BuildingInfo> buildings = new List<BuildingInfo>();
+        List<BuildingInfo> missionBuildings = new List<BuildingInfo>();
         List<BuildingInfo>[] externalBuildings = new List<BuildingInfo>[8];
         for (int i = 0; i < 8; i++) externalRoads[i] = new List<RoadInfo>();
         for (int i = 0; i < 8; i++) externalBuildings[i] = new List<BuildingInfo>();
 
         addRoads(X, Y, intersections, roads, externalRoads);
-        addBuildings(X, Y, buildings, externalBuildings);
+        addBuildings(X, Y, buildings, externalBuildings, missionBuildings);
 
         ChunkData ret = new ChunkData(
             new Vector2Int(X, Y),
@@ -89,7 +93,8 @@ public class Map {
             roads, 
             externalRoads, 
             buildings, 
-            externalBuildings
+            externalBuildings,
+            missionBuildings
         );
 
         return ret;
@@ -156,7 +161,7 @@ public class Map {
     }
 
 
-    private static void addBuildings(int X, int Y, List<BuildingInfo> buildings, List<BuildingInfo>[] externalBuildings) {
+    private static void addBuildings(int X, int Y, List<BuildingInfo> buildings, List<BuildingInfo>[] externalBuildings, List<BuildingInfo> missionBuildings) {
         int minX = X * WorldGenerationConstants.chunkBuildingWidth + 1;
         int minY = Y * WorldGenerationConstants.chunkBuildingWidth + 1;
         int maxX = (X + 1) * WorldGenerationConstants.chunkBuildingWidth - 1;
@@ -169,6 +174,7 @@ public class Map {
                 BuildingInfo buildingInfo = getBuilding(x, y, currentPerm);
 
                 buildings.Add(buildingInfo);
+                if (buildingInfo.isMissionBuilding) missionBuildings.Add(buildingInfo);
             }
         }
 
@@ -242,6 +248,7 @@ public class Map {
         );
 
         buildingInfo.buildingType = getBuildingFromPerm(x, y, perm);
+        buildingInfo.isMissionBuilding = isMissionBuilding[buildingInfo.buildingType];
 
         buildingInfo.rot = rotation[rotXInd][rotYInd];
 
