@@ -9,15 +9,17 @@ public class WorldRenderer : MonoBehaviour
     public int[] intersectionWeights;
     public GameObject roadPfb;
     public GameObject emptyPfb;
+    public GameObject beaconPfb;
     public GameObject[] buildingPfb;
     public int[] buildingWeights;
     public bool[] isMissionBuilding;
 
     public GameObject player;
+    public PlayerInfo playerInfo;
 
     public Dictionary<Vector2Int, Chunk> chunkList = new Dictionary<Vector2Int, Chunk>();
     private Rigidbody playerBody;
-    Vector2Int chunkPos;
+    public Vector2Int chunkPos;
 
     // Start is called before the first frame update
     void Start() {
@@ -34,6 +36,7 @@ public class WorldRenderer : MonoBehaviour
             Vector2Int externChunk = chunkPos + displacement;
             renderChunk(Map.getChunk(externChunk.x, externChunk.y));
         }
+        MissionController.initMissions(this, beaconPfb, playerInfo);
     }
 
     // Update is called once per frame
@@ -76,7 +79,9 @@ public class WorldRenderer : MonoBehaviour
         }
     }
 
-
+    private void FixedUpdate() {
+        MissionController.fixedUpdate();
+    }
 
 
     #region Rendering

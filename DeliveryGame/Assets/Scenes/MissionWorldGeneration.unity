@@ -187,6 +187,7 @@ MonoBehaviour:
   intersectionWeights: 0100000001000000010000000100000001000000
   roadPfb: {fileID: 5585452976917657863, guid: b6876681db2934949b731fa2daa43f65, type: 3}
   emptyPfb: {fileID: 8544357369958995791, guid: f6500cc3316c7504f9c45987c0740e08, type: 3}
+  beaconPfb: {fileID: 5873243313356892659, guid: 5407872f4265f1e4e8d65ed1778eece0, type: 3}
   buildingPfb:
   - {fileID: 2120296571772071315, guid: 6f2e707b31127904ab592a5f7f5f4b3c, type: 3}
   - {fileID: 2120296571772071315, guid: 306fe07c109b8e343860bfaab7bb1788, type: 3}
@@ -199,6 +200,8 @@ MonoBehaviour:
   buildingWeights: 0100000001000000010000000100000001000000010000000100000001000000
   isMissionBuilding: 0100000001010000
   player: {fileID: 281901683}
+  playerInfo: {fileID: 855175298}
+  chunkPos: {x: 0, y: 0}
 --- !u!4 &516288521
 Transform:
   m_ObjectHideFlags: 0
