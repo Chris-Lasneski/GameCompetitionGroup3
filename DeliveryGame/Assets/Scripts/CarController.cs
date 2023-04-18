@@ -148,8 +148,8 @@ public class CarController : MonoBehaviour
     private void Steering()
     {
         steeringAngle = maxSteeringAngle * horizontalInput;
-        frontLeftWheelCollider.steerAngle = Mathf.Lerp(frontLeftWheelCollider.steerAngle, steeringAngle, 0.5f);//steeringAngle;
-        frontRightWheelCollider.steerAngle = Mathf.Lerp(frontRightWheelCollider.steerAngle, steeringAngle, 0.5f);//steeringAngle;
+        frontLeftWheelCollider.steerAngle = steeringAngle;
+        frontRightWheelCollider.steerAngle = steeringAngle;
     }
 
     // helper function dealing with wheel updates, reduces clutter in main loop

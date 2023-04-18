@@ -19,6 +19,8 @@ public class Map {
 
     private static List<int> buildingChoices = new List<int>();
     private static int buildingCount;
+    private static List<int> intersectionChoices = new List<int>();
+    private static int intersectionCount;
 
     private static float[] buildingOffset = new float[] {
             -(WorldGenerationConstants.roadWidth + WorldGenerationConstants.buildingWidth) / 2,
@@ -27,9 +29,10 @@ public class Map {
     private static float roadLength = WorldGenerationConstants.roadLength;
     private static int buildingsPerRoad = WorldGenerationConstants.buildingsPerRoad;
     private static int chunkSize = WorldGenerationConstants.chunkSize;
-    private static int permSize = WorldGenerationConstants.buildingPermSize;
+    private static int buildingPermSize = WorldGenerationConstants.buildingPermSize;
+    private static int intersectionPermSize = WorldGenerationConstants.intersectionPermSize;
 
-    public static void initMap(int[] buildingWeights) {
+    public static void initMap(int[] buildingWeights, int[] intersectionWeights) {
         directionToExternalIndex.Clear();
         directionToExternalIndex.Add(new Vector2Int( 0,  1), 0);
         directionToExternalIndex.Add(new Vector2Int( 1,  1), 1);
@@ -57,11 +60,19 @@ public class Map {
         }
 
         buildingCount = buildingChoices.Count;
+
+        for (int i = 0; i < intersectionWeights.Length; i++) {
+            for (int j = 0; j < intersectionWeights[i]; j++) {
+                intersectionChoices.Add(i);
+            }
+        }
+
+        intersectionCount = intersectionChoices.Count;
     }
 
     public static ChunkData getChunk(int X, int Y) {
 
-        List<Vector2> vertices = new List<Vector2>();
+        List<IntersectionInfo> intersections = new List<IntersectionInfo>();
         List<RoadInfo> roads = new List<RoadInfo>();
         List<RoadInfo>[] externalRoads = new List<RoadInfo>[8];
         List<BuildingInfo> buildings = new List<BuildingInfo>();
@@ -69,12 +80,12 @@ public class Map {
         for (int i = 0; i < 8; i++) externalRoads[i] = new List<RoadInfo>();
         for (int i = 0; i < 8; i++) externalBuildings[i] = new List<BuildingInfo>();
 
-        addRoads(X, Y, vertices, roads, externalRoads);
+        addRoads(X, Y, intersections, roads, externalRoads);
         addBuildings(X, Y, buildings, externalBuildings);
 
         ChunkData ret = new ChunkData(
-            new Vector2Int(X, Y), 
-            vertices, 
+            new Vector2Int(X, Y),
+            intersections, 
             roads, 
             externalRoads, 
             buildings, 
@@ -84,7 +95,7 @@ public class Map {
         return ret;
     }
 
-    private static void addRoads(int X, int Y, List<Vector2> vertices, List<RoadInfo> roads, List<RoadInfo>[] externalRoads) {
+    private static void addRoads(int X, int Y, List<IntersectionInfo> intersections, List<RoadInfo> roads, List<RoadInfo>[] externalRoads) {
 
 
         float minX = X * chunkSize;
@@ -92,14 +103,22 @@ public class Map {
         float maxX = (X + 1) * chunkSize;
         float maxY = (Y + 1) * chunkSize;
 
+        int[][] perm = Math.generatePerm(X, Y, intersectionPermSize);
+        int xCount = 0;
+        int yCount = 0;
+
         // add vertices in a grid, assumes chunkSize is divisible by roadLength
         // add edges below and left of the vertices when they are placed
         // edges going off the chunk are recorded as external instead of internal
         for (float x = minX; x < maxX; x += roadLength) {
             for (float y = minY; y < maxY; y += roadLength) {
+                
                 Vector2 placed = new Vector2(x, y);
+                IntersectionInfo info = new IntersectionInfo();
+                info.pos = placed;
+                info.intersectionType = getIntersectionFromPerm(xCount, yCount, perm);
 
-                vertices.Add(placed);
+                intersections.Add(info);
 
                 float x2 = x - roadLength;
                 float y2 = y;
@@ -120,7 +139,9 @@ public class Map {
                 else {
                     roads.Add(new RoadInfo(placed, new Vector2(x2, y2)));
                 }
+                yCount++;
             }
+            xCount++;
         }
 
         //add external edges to the right and above the grid. assumes chunksize is divisible by roadLength
@@ -141,7 +162,7 @@ public class Map {
         int maxX = (X + 1) * WorldGenerationConstants.chunkBuildingWidth - 1;
         int maxY = (Y + 1) * WorldGenerationConstants.chunkBuildingWidth - 1;
 
-        int [][] currentPerm = Math.generatePerm(X, Y, permSize);
+        int [][] currentPerm = Math.generatePerm(X, Y, buildingPermSize);
 
         for (int x = minX; x < maxX; x++) {
             for (int y = minY; y < maxY; y++) {
@@ -155,7 +176,7 @@ public class Map {
         int[][] externalPerm;
 
         displacement = externalIndexToDirection[0];
-        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, permSize);
+        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
         for (int x = minX; x < maxX; x++) {
             externalBuildings[0].Add(getBuilding(x, maxY + 0, externalPerm));
             externalBuildings[0].Add(getBuilding(x, maxY + 1, externalPerm));
@@ -165,7 +186,7 @@ public class Map {
         }
 
         displacement = externalIndexToDirection[2];
-        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, permSize);
+        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
         for (int y = minY; y < maxY; y++) {
             externalBuildings[2].Add(getBuilding(maxX, y + 0, externalPerm));
             externalBuildings[2].Add(getBuilding(maxX + 1, y, externalPerm));
@@ -175,14 +196,14 @@ public class Map {
         }
 
         displacement = externalIndexToDirection[1];
-        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, permSize);
+        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
         externalBuildings[1].Add(getBuilding(maxX + 0, maxY + 0, externalPerm));
         externalBuildings[1].Add(getBuilding(maxX + 1, maxY + 0, externalPerm));
         externalBuildings[1].Add(getBuilding(maxX + 0, maxY + 1, externalPerm));
         externalBuildings[1].Add(getBuilding(maxX + 1, maxY + 1, externalPerm));
 
         displacement = externalIndexToDirection[2];
-        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, permSize);
+        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
         externalBuildings[3].Add(getBuilding(maxX + 0, minY - 1, externalPerm));
         externalBuildings[3].Add(getBuilding(maxX + 1, minY - 1, externalPerm));
         externalBuildings[3].Add(getBuilding(maxX + 0, minY - 2, externalPerm));
@@ -194,12 +215,17 @@ public class Map {
         externalBuildings[5].Add(getBuilding(minX - 2, minY - 2, currentPerm));
 
         displacement = externalIndexToDirection[0];
-        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, permSize);
+        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
         externalBuildings[7].Add(getBuilding(minX - 1, maxY + 0, externalPerm));
         externalBuildings[7].Add(getBuilding(minX - 2, maxY + 0, externalPerm));
         externalBuildings[7].Add(getBuilding(minX - 1, maxY + 1, externalPerm));
         externalBuildings[7].Add(getBuilding(minX - 2, maxY + 1, externalPerm));
     }
+
+    private static float[][] rotation = new float[][] {
+        new float[] {0, 90},
+        new float[] {270, 180}
+    };
 
     private static BuildingInfo getBuilding(int x, int y, int[][] perm) {
         BuildingInfo buildingInfo = new BuildingInfo();
@@ -207,20 +233,31 @@ public class Map {
         int displaceX = Math.mod(x, buildingsPerRoad);
         int displaceY = Math.mod(y, buildingsPerRoad);
 
+        int rotXInd = displaceX % 2;
+        int rotYInd = displaceY % 2;
+
         buildingInfo.pos = new Vector2(
             ((x - displaceX) / 2) * roadLength + buildingOffset[displaceX],
             ((y - displaceY) / 2) * roadLength + buildingOffset[displaceY]
         );
 
-        buildingInfo.buildingType = getBuildingType(x, y, perm);
+        buildingInfo.buildingType = getBuildingFromPerm(x, y, perm);
+
+        buildingInfo.rot = rotation[rotXInd][rotYInd];
 
         return buildingInfo;
     }
 
-    private static int getBuildingType(int x, int y, int[][] perm) {
+    private static int getBuildingFromPerm(int x, int y, int[][] perm) {
 
-        int index = perm[Math.mod(x, permSize)][Math.mod(y, permSize)] % buildingCount;
+        int index = perm[Math.mod(x, buildingPermSize)][Math.mod(y, buildingPermSize)] % buildingCount;
 
         return buildingChoices[index];
+    }
+
+    private static int getIntersectionFromPerm(int x, int y, int[][] perm) {
+
+        int index = perm[Math.mod(x, intersectionPermSize)][Math.mod(y, intersectionPermSize)] % intersectionCount;
+        return intersectionChoices[index];
     }
 }

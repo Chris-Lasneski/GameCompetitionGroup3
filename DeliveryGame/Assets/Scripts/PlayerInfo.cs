@@ -10,6 +10,7 @@ public class PlayerInfo : MonoBehaviour
 {
     // currently set for testing purposes will need to be changed for final value.
     public float Money = 20000f;
+    public bool paused = false;
 
     // should be able to find items list this way
     //private UpgradeUI upgradeUI;
@@ -49,6 +50,7 @@ public class PlayerInfo : MonoBehaviour
     void Start()
     {
         gameObject.tag = "Player";
+        LawEnforcementController.playerInfo = this;
 
         //upgradeUI = GetComponent<UpgradeUI>();
         //items = upgradeUI.items;

@@ -22,10 +22,12 @@ public class MenuUI : MonoBehaviour
             if (paused)
             {
                 menu.SetActive(true);
+                Time.timeScale = 0.0f;
             } 
             else
             {
                 menu.SetActive(false);
+                Time.timeScale = 1.0f;
             }
         }
     }
