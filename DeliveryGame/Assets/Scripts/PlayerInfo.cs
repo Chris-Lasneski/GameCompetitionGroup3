@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.TerrainTools;
 using UnityEngine;
 using static PlayerInfo;
 using static UpgradeUI;
@@ -49,6 +48,7 @@ public class PlayerInfo : MonoBehaviour
     void Start()
     {
         gameObject.tag = "Player";
+        LawEnforcementController.playerInfo = this;
 
         //upgradeUI = GetComponent<UpgradeUI>();
         //items = upgradeUI.items;
