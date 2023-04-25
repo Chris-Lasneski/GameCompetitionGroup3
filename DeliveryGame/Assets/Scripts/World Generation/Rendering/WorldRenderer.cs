@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class WorldRenderer : MonoBehaviour
@@ -12,16 +11,21 @@ public class WorldRenderer : MonoBehaviour
     public GameObject emptyPfb;
     public GameObject[] buildingPfb;
     public int[] buildingWeights;
+    public bool[] isMissionBuilding;
 
     public GameObject player;
 
-    Dictionary<Vector2Int, Chunk> chunkList = new Dictionary<Vector2Int, Chunk>();
+    public Dictionary<Vector2Int, Chunk> chunkList = new Dictionary<Vector2Int, Chunk>();
     private Rigidbody playerBody;
     Vector2Int chunkPos;
 
     // Start is called before the first frame update
     void Start() {
+<<<<<<< HEAD
         Map.initMap(buildingWeights, intersectionWeights);
+=======
+        Map.initMap(buildingWeights, intersectionWeights, isMissionBuilding);
+>>>>>>> main
 
         playerBody = player.GetComponent<Rigidbody>();
         chunkPos = new Vector2Int(
@@ -159,9 +163,20 @@ public class WorldRenderer : MonoBehaviour
     private BuildingBehavior placeBuilding(BuildingInfo b, Transform t) {
         Vector3 pos = new Vector3(b.pos.x, 0, b.pos.y);
 
+<<<<<<< HEAD
         GameObject ret = Instantiate(buildingPfb[b.buildingType], pos, Quaternion.Euler(0, b.rot, 0), t);
+=======
+        GameObject go = Instantiate(buildingPfb[b.buildingType], pos, Quaternion.Euler(0, b.rot, 0), t);
+>>>>>>> main
 
-        return ret.AddComponent<BuildingBehavior>();
+        BuildingBehavior ret;
+
+        if(b.isMissionBuilding) ret = go.AddComponent<MissionBuildingBehavior>();
+        else ret = go.AddComponent<BuildingBehavior>();
+
+        ret.position = b.pos;
+
+        return ret;
     }
 
     #endregion

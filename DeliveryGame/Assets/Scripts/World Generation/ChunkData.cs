@@ -82,10 +82,13 @@ public class BuildingInfo {
 public class IntersectionInfo {
     public Vector2 pos;
     public int intersectionType;
+<<<<<<< HEAD
 }
 
 public class IntersectionInfo {
     public Vector2 pos;
     public int intersectionType;
+=======
+>>>>>>> main
 }
 
