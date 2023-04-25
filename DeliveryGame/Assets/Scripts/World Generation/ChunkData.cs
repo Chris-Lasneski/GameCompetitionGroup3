@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -24,9 +25,7 @@ public class Chunk {
     }
 
     public void delete() {
-        foreach(BuildingBehavior b in buildingBehavior) {
-            MonoBehaviour.Destroy(parent);
-        }
+        MonoBehaviour.Destroy(parent);
     }
 }
 
@@ -36,6 +35,7 @@ public class ChunkData {
     public List<IntersectionInfo> intersections { get; private set; } // list of intersections in world units
     public List<RoadInfo> roads { get; private set; } // list of roads. roads are straight lines between two intersections
     public List<BuildingInfo> buildings { get; private set; } //list of buildings
+    public List<BuildingInfo> missionBuildings { get; private set; } //list of buildings
 
     public List<RoadInfo>[] externalRoads { get; private set; }// list of roads going outside of the chunk in world units. roads are straight lines between two intersections
     public List<BuildingInfo>[] externalBuildings { get; private set; } //list of buildings on the border of a chunk
@@ -47,7 +47,8 @@ public class ChunkData {
         List<RoadInfo> roads, 
         List<RoadInfo>[] externalRoads,
         List<BuildingInfo> buildings,
-        List<BuildingInfo>[] externalBuildings
+        List<BuildingInfo>[] externalBuildings,
+        List<BuildingInfo> missionBuildings
 
     ) {
         this.chunkPos = chunkPos;
@@ -56,6 +57,7 @@ public class ChunkData {
         this.externalRoads = externalRoads;
         this.buildings = buildings;
         this.externalBuildings = externalBuildings;
+        this.missionBuildings = missionBuildings;
     }
 
 }
@@ -74,6 +76,12 @@ public class BuildingInfo {
     public Vector2 pos;
     public float rot;
     public int buildingType;
+    public bool isMissionBuilding;
+}
+
+public class IntersectionInfo {
+    public Vector2 pos;
+    public int intersectionType;
 }
 
 public class IntersectionInfo {
