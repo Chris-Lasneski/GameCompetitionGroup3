@@ -14,13 +14,27 @@ public class MissionController {
 
     public static float timer = 0;
 
+    public static GameObject timerUI;
+    public static GameObject questUI;
+    private static bool q = false;
+
     public static void fixedUpdate() {
         timer += Time.deltaTime;
+        if (isStarted)
+        {
+            if(Input.GetKeyDown(KeyCode.Tab))
+            {
+                q = !q;
+                questUI.SetActive(q);
+            }
+        }
     }
 
-    public static void initMissions(WorldRenderer world, GameObject beaconPfb, PlayerInfo playerInfo) {
+    public static void initMissions(WorldRenderer world, GameObject beaconPfb, PlayerInfo playerInfo, GameObject time, GameObject quest) {
         MissionController.world = world;
         MissionController.playerInfo = playerInfo;
+        timerUI = time;
+        questUI = quest;
 
         beacon = MonoBehaviour.Instantiate(beaconPfb, new Vector3(0,0,0), new Quaternion());
         createRandomMission();
@@ -50,14 +64,20 @@ public class MissionController {
             if (!isStarted) {
                 if (pos == mission.startLocation) {
                     isStarted = true;
+                    timerUI.SetActive(true);
+                    questUI.SetActive(true);
+                    q = true;
                     beacon.transform.SetPositionAndRotation(new Vector3(mission.endLocation.x, 0, mission.endLocation.y), new Quaternion());
                     timer = 0;
+                    Debug.Log(mission.estimatedTime);
                 }
             }
             else {
                 if(pos == mission.endLocation) {
 
                     float t = timer / mission.estimatedTime;
+                    Debug.Log(timer);
+                    Debug.Log(t);
 
                     if(t <= 1) {
                         //5 stars
@@ -81,6 +101,9 @@ public class MissionController {
                     }
 
                     isStarted = false;
+                    timerUI.SetActive(false);
+                    questUI.SetActive(false);
+                    q = false;
                     mission = null;
 
                     createRandomMission();
