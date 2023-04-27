@@ -52,15 +52,12 @@ public class MissionController {
                     isStarted = true;
                     beacon.transform.SetPositionAndRotation(new Vector3(mission.endLocation.x, 0, mission.endLocation.y), new Quaternion());
                     timer = 0;
-                    Debug.Log(mission.estimatedTime);
                 }
             }
             else {
                 if(pos == mission.endLocation) {
 
                     float t = timer / mission.estimatedTime;
-                    Debug.Log(timer);
-                    Debug.Log(t);
 
                     if(t <= 1) {
                         //5 stars

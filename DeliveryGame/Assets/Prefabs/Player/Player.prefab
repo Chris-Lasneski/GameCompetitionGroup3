@@ -345,6 +345,9 @@ MonoBehaviour:
   maxSteeringAngle: 40
   brakeTorque: 15000
   isFrontDrive: 1
+  maxSpeedModifier: 0
+  brakeTorqueModifier: 0
+  accelerationModifier: 400
   rb: {fileID: 0}
   com: {x: 0, y: 0, z: 0}
 --- !u!1 &5249939727237918179
@@ -682,6 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326d12b25f9f33846a51dad41a335f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Money: 20000
 --- !u!114 &3224142372418825051
 MonoBehaviour:
   m_ObjectHideFlags: 0
