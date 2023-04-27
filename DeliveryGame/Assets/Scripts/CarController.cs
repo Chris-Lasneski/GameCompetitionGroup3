@@ -43,7 +43,7 @@ public class CarController : MonoBehaviour
     // cars rigidbody
     public Rigidbody rb;
     // center of mass vector
-    public Vector3 com;
+    public Vector3 com;  
 
     private void Start()
     {
