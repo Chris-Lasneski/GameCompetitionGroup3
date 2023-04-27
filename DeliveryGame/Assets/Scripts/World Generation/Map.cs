@@ -32,7 +32,6 @@ public class Map {
     private static int chunkSize = WorldGenerationConstants.chunkSize;
     private static int buildingPermSize = WorldGenerationConstants.buildingPermSize;
     private static int intersectionPermSize = WorldGenerationConstants.intersectionPermSize;
-
     public static void initMap(int[] buildingWeights, int[] intersectionWeights, bool[] isMissionBuilding) {
         directionToExternalIndex.Clear();
         directionToExternalIndex.Add(new Vector2Int( 0,  1), 0);
@@ -85,6 +84,7 @@ public class Map {
         for (int i = 0; i < 8; i++) externalBuildings[i] = new List<BuildingInfo>();
 
         addRoads(X, Y, intersections, roads, externalRoads);
+
         addBuildings(X, Y, buildings, externalBuildings, missionBuildings);
 
         ChunkData ret = new ChunkData(
@@ -248,6 +248,7 @@ public class Map {
         );
 
         buildingInfo.buildingType = getBuildingFromPerm(x, y, perm);
+
         buildingInfo.isMissionBuilding = isMissionBuilding[buildingInfo.buildingType];
 
         buildingInfo.rot = rotation[rotXInd][rotYInd];
