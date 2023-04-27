@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1864648512197013745}
   - component: {fileID: 3348427255703346986}
   - component: {fileID: 8444954477408508161}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: road_straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8910529671320286799}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5100418177509319613}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: road_straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
