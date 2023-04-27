@@ -9,7 +9,9 @@ public class HUD : MonoBehaviour
     // text output to speedometer
     public Text speed;
     // get the car's rigid body to calculate the velocity
-    public Rigidbody car;
+    private Rigidbody car;
+    
+    public PlayerInfo playerInfo;
 
     // used to deal with the math to clamp to an int and extract from rigidbody.
     private float velocity;
@@ -24,6 +26,8 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        car = playerInfo.currentCar.GetComponent<Rigidbody>();
+
         // get the velocity of the car and multiply by 2.237 to get mph, might need to change value depending on the scale of world
         velocity = car.velocity.magnitude * 2.237f;
         speed.text = (Mathf.Round(velocity).ToString());

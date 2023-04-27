@@ -13,7 +13,7 @@ public class WorldRenderer : MonoBehaviour
     public int[] buildingWeights;
     public bool[] isMissionBuilding;
 
-    public GameObject player;
+    public PlayerInfo player;
 
     public Dictionary<Vector2Int, Chunk> chunkList = new Dictionary<Vector2Int, Chunk>();
     private Rigidbody playerBody;
@@ -21,13 +21,10 @@ public class WorldRenderer : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-<<<<<<< HEAD
-        Map.initMap(buildingWeights, intersectionWeights);
-=======
-        Map.initMap(buildingWeights, intersectionWeights, isMissionBuilding);
->>>>>>> main
 
-        playerBody = player.GetComponent<Rigidbody>();
+        Map.initMap(buildingWeights, intersectionWeights, isMissionBuilding);
+
+        playerBody = player.currentCar.GetComponent<Rigidbody>();
         chunkPos = new Vector2Int(
             (int)playerBody.position.x / WorldGenerationConstants.chunkSize,
             (int)playerBody.position.y / WorldGenerationConstants.chunkSize
@@ -163,11 +160,8 @@ public class WorldRenderer : MonoBehaviour
     private BuildingBehavior placeBuilding(BuildingInfo b, Transform t) {
         Vector3 pos = new Vector3(b.pos.x, 0, b.pos.y);
 
-<<<<<<< HEAD
-        GameObject ret = Instantiate(buildingPfb[b.buildingType], pos, Quaternion.Euler(0, b.rot, 0), t);
-=======
+
         GameObject go = Instantiate(buildingPfb[b.buildingType], pos, Quaternion.Euler(0, b.rot, 0), t);
->>>>>>> main
 
         BuildingBehavior ret;
 

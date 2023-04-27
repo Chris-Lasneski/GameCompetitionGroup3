@@ -7,15 +7,11 @@ public class MenuUI : MonoBehaviour
 {
     public GameObject menu;
     public bool paused = false;
-    public Button exitButton;
-    public Button resumeButton;
-    public Button settingsButton;
 
     // Start is called before the first frame update
     void Start()
     {
         menu.SetActive(false);
-
 
         //Button btn = exitButton.GetComponent<Button>();
         //btn.onClick.AddListener(ExitTaskOnClick);
@@ -48,14 +44,4 @@ public class MenuUI : MonoBehaviour
             Time.timeScale = 1.0f;
         }
     }
-
-    //public void ExitTaskOnClick()
-    //{
-    //    Application.Quit();
-    //}
-
-    //public void ResumeButtonClick()
-    //{
-    //    PauseHandler(false);
-    //}
 }

@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    public GameObject player;
+    private Rigidbody player;
+
+    public PlayerInfo playerinfo;
+
     public GameObject cameraPivot;
     public float yOffset = 1f;
     public float sensitivity = 0f;
@@ -40,6 +44,8 @@ public class Camera : MonoBehaviour
     {
         sensitivity = GameObject.FindWithTag("Player").GetComponent<SettingsUI>().sensitivityValue;
         paused = GameObject.FindWithTag("Player").GetComponent<MenuUI>().paused;
+
+        player = playerinfo.currentCar.GetComponent<Rigidbody>();
 
         if (paused)
         {

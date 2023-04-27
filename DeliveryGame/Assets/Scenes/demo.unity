@@ -186,12 +186,8 @@ MonoBehaviour:
   - {fileID: 2120296571772071315, guid: b3f182ff5bc2fad469db9703e4212b12, type: 3}
   - {fileID: 2120296571772071315, guid: 3d16d869a11984b4099e724285a9ac73, type: 3}
   buildingWeights: 0100000001000000010000000100000001000000010000000100000001000000
-<<<<<<< HEAD
-  player: {fileID: 341821476}
-=======
   isMissionBuilding: 
-  player: {fileID: 281901683}
->>>>>>> main
+  player: {fileID: 0}
 --- !u!4 &516288521
 Transform:
   m_ObjectHideFlags: 0
@@ -708,23 +704,11 @@ PrefabInstance:
     - target: {fileID: 3224142372418825051, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
       propertyPath: menu
       value: 
-<<<<<<< HEAD
-      objectReference: {fileID: 2030011996}
-    - target: {fileID: 3224142372418825051, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
-      propertyPath: exitButton
-      value: 
-      objectReference: {fileID: 1904615505}
-    - target: {fileID: 4172733307817736763, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 0}
-=======
       objectReference: {fileID: 217880633}
     - target: {fileID: 4172733307817736763, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
       propertyPath: rb
       value: 
-      objectReference: {fileID: 281901687}
->>>>>>> main
+      objectReference: {fileID: 0}
     - target: {fileID: 4172733307817736763, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
       propertyPath: brakeTorque
       value: 80
