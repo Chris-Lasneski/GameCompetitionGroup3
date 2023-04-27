@@ -33,10 +33,10 @@ public class BuyCars : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
 
-    }
+    //}
 
     public void buyCar(int i)
     {
@@ -56,10 +56,7 @@ public class BuyCars : MonoBehaviour
                         player.hatchOwn = !player.hatchOwn;
                         switchCar(player.hatchback);
                     }
-                    else if(player.hatchOwn)
-                    {
-                        switchCar(player.hatchback);
-                    }
+                    else if(player.hatchOwn) { switchCar(player.hatchback); }
                     break;
                 }
             case 2:
@@ -70,10 +67,7 @@ public class BuyCars : MonoBehaviour
                         player.sportsOwn = !player.sportsOwn;
                         switchCar(player.sports);
                     }
-                    else if(player.sportsOwn)
-                    {
-                        switchCar(player.sports);
-                    }
+                    else if(player.sportsOwn) { switchCar(player.sports); }
                     break;
                 }
             case 3:
@@ -84,10 +78,7 @@ public class BuyCars : MonoBehaviour
                         player.muscleOwn = !player.muscleOwn;
                         switchCar(player.muscle);
                     }
-                    else if( player.muscleOwn)
-                    {
-                        switchCar(player.muscle);
-                    }
+                    else if( player.muscleOwn) { switchCar(player.muscle); }
                     break;
                 }
             case 4:

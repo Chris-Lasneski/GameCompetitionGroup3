@@ -17,6 +17,9 @@ public class WorldRenderer : MonoBehaviour
      public GameObject player;
      public PlayerInfo playerInfo;
 
+    public GameObject timer;
+    public GameObject questUI;
+
     public Dictionary<Vector2Int, Chunk> chunkList = new Dictionary<Vector2Int, Chunk>();
     private Rigidbody playerBody;
     public Vector2Int chunkPos;
@@ -37,7 +40,7 @@ public class WorldRenderer : MonoBehaviour
             Vector2Int externChunk = chunkPos + displacement;
             renderChunk(Map.getChunk(externChunk.x, externChunk.y));
         }
-        MissionController.initMissions(this, beaconPfb, playerInfo);
+        MissionController.initMissions(this, beaconPfb, playerInfo, timer, questUI);
     }
 
     // Update is called once per frame
