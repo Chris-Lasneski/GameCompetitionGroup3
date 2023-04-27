@@ -9,25 +9,39 @@ public class PlayerInfo : MonoBehaviour
 {
     // currently set for testing purposes will need to be changed for final value.
     public float Money = 20000f;
-    public bool paused = false;
 
-    [SerializeField] public GameObject sedan;
-    [SerializeField] public GameObject hatchback;
-    [SerializeField] public GameObject sports;
-    [SerializeField] public GameObject muscle;
-    [SerializeField] public GameObject suv;
-    [SerializeField] public GameObject van;
-    [SerializeField] public GameObject pickup;
+    // should be able to find items list this way
+    //private UpgradeUI upgradeUI;
 
-    [SerializeField] public bool sedOwn = true;
-    [SerializeField] public bool hatchOwn = false;
-    [SerializeField] public bool sportsOwn = false;
-    [SerializeField] public bool muscleOwn = false;
-    [SerializeField] public bool suvOwn = false;
-    [SerializeField] public bool vanOwn = false;
-    [SerializeField] public bool pickupOwn = false;
+    //public List<UpgradeItem> items;
 
-    public GameObject currentCar;
+    //public class UpgradeItem
+    //{
+    //    string name;
+    //    int cost;
+    //    bool bought;
+    //    public UpgradeItem(string name, int cost, bool bought)
+    //    {
+    //        this.name = name;
+    //        this.cost = cost;
+    //        this.bought = bought;
+    //    }
+
+    //    public string getName()
+    //    {
+    //        return this.name;
+    //    }
+
+    //    public int getCost() { return this.cost; }
+
+    //    public bool isBought()
+    //    {
+    //        return this.bought;
+    //    }
+    //    public void Buy() {    this.bought = true; }
+    //}
+    //public List<UpgradeItem> items = new List<UpgradeItem>();
+
 
 
     // Start is called before the first frame update
@@ -35,6 +49,21 @@ public class PlayerInfo : MonoBehaviour
     {
         gameObject.tag = "Player";
         LawEnforcementController.playerInfo = this;
+
+        //upgradeUI = GetComponent<UpgradeUI>();
+        //items = upgradeUI.items;
+
+        //if (items == null)
+        //{
+        //    items.Add(new UpgradeItem("wheel1", 0, true));
+        //    items.Add(new UpgradeItem("wheel2", 200, false));
+        //    items.Add(new UpgradeItem("wheel3", 500, false));
+        //    items.Add(new UpgradeItem("wheel4", 750, false));
+        //    items.Add(new UpgradeItem("engine1", 0, true));
+        //    items.Add(new UpgradeItem("engine2", 300, false));
+        //    items.Add(new UpgradeItem("engine3", 600, false));
+        //    items.Add(new UpgradeItem("engine4", 1000, false));
+        //}
     }
 
     // Update is called once per frame
