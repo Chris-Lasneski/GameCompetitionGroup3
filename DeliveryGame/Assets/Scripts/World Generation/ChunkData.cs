@@ -84,8 +84,3 @@ public class IntersectionInfo {
     public int intersectionType;
 }
 
-//public class IntersectionInfo {
-//    public Vector2 pos;
-//    public int intersectionType;
-//}
-

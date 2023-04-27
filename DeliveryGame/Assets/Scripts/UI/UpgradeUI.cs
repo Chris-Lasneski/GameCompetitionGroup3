@@ -37,6 +37,7 @@ public class UpgradeUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.tag = "Upgrade";
 
         foreach (Upgrades upgrade in upgrades)
         {
