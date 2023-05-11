@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1414492966738753326}
   - component: {fileID: 6271537914642691132}
   - component: {fileID: 2048804600555317409}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: large_buildingC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4858114354917385024}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: large_buildingC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
