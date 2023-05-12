@@ -13,15 +13,12 @@ public class WorldRenderer : MonoBehaviour
     public GameObject[] buildingPfb;
     public int[] buildingWeights;
     public bool[] isMissionBuilding;
-
-     public GameObject player;
      public PlayerInfo playerInfo;
 
     public GameObject timer;
     public GameObject questUI;
 
     public Dictionary<Vector2Int, Chunk> chunkList = new Dictionary<Vector2Int, Chunk>();
-    private Rigidbody playerBody;
     public Vector2Int chunkPos;
 
     // Start is called before the first frame update
@@ -29,11 +26,7 @@ public class WorldRenderer : MonoBehaviour
 
         Map.initMap(buildingWeights, intersectionWeights, isMissionBuilding);
 
-        playerBody = playerInfo.currentCar.GetComponent<Rigidbody>();
-        chunkPos = new Vector2Int(
-            (int)playerBody.position.x / WorldGenerationConstants.chunkSize,
-            (int)playerBody.position.y / WorldGenerationConstants.chunkSize
-        );
+        chunkPos = new Vector2Int(0, 0);
 
         renderChunk(Map.getChunk(chunkPos.x, chunkPos.y));
         foreach (Vector2Int displacement in Map.directionToExternalIndex.Keys) {
@@ -46,7 +39,7 @@ public class WorldRenderer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = playerBody.position;
+        Vector3 pos = playerInfo.currentCar.transform.position;
         int posX = (int)pos.x - Math.mod((int)pos.x, WorldGenerationConstants.chunkSize);
         int posY = (int)pos.z - Math.mod((int)pos.z, WorldGenerationConstants.chunkSize);
 
