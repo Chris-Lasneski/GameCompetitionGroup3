@@ -1113,6 +1113,10 @@ PrefabInstance:
       propertyPath: sensitivity
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7118483667759509124, guid: b87c0956eb189fd4b8b1e6853300b426, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b87c0956eb189fd4b8b1e6853300b426, type: 3}
 --- !u!1 &1070370329
