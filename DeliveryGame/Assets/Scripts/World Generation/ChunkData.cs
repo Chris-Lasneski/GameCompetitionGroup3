@@ -82,6 +82,7 @@ public class BuildingInfo {
 public class IntersectionInfo {
     public Vector2 pos;
     public int intersectionType;
+    public bool isOpposite;
 }
 
 //public class IntersectionInfo {
