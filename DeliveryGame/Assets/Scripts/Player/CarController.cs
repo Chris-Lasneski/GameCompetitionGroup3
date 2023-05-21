@@ -6,6 +6,8 @@ using System;
 
 public class CarController : MonoBehaviour
 {
+    // largely followed along this tutorial:https://www.youtube.com/watch?v=Z4HA8zJhGEk
+
     // colliders for the wheels, deals with brake torque and motor torque
     [SerializeField] private WheelCollider frontLeftWheelCollider;
     [SerializeField] private WheelCollider frontRightWheelCollider;

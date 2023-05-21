@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
+    // adapted from here:https://www.youtube.com/watch?v=cAh--AfQWVw
     private Rigidbody player;
 
     public PlayerInfo playerinfo;

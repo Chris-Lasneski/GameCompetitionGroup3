@@ -7,6 +7,7 @@ public class MenuUI : MonoBehaviour
 {
     public GameObject menu;
     public bool paused = false;
+    public PlayerInfo player;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +25,10 @@ public class MenuUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !player.subMenu)
         {
-            paused = !paused;
-            PauseHandler(paused);
+        paused = !paused;
+        PauseHandler(paused);
         }
     }
 

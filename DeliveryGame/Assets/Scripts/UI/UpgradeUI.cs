@@ -5,15 +5,6 @@ using UnityEngine.UI;
 
 public class UpgradeUI : MonoBehaviour
 {
-    //[SerializeField]
-    //private Transform scrollViewContent;
-
-    //[SerializeField]
-    //private GameObject scrollViewContentPrefab;
-
-    //[SerializeField]
-    //private List<Sprite> sprites;
-
     [System.Serializable]
     public class Upgrades
     {
@@ -33,6 +24,8 @@ public class UpgradeUI : MonoBehaviour
 
     public PlayerInfo player;
     public CarController carController;
+
+    public GameObject pauseMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -57,12 +50,16 @@ public class UpgradeUI : MonoBehaviour
 
             item.GetComponent<Button>().onClick.AddListener(() => { buyUpgrade(upgrade); });
         }
+    }
 
-        //foreach (Sprite sprite in sprites)
-        //{
-        //    GameObject newSprite = Instantiate(scrollViewContentPrefab, scrollViewContent);
-
-        //}
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && player.subMenu && Upgradeui.activeSelf)
+        {
+            player.subMenu = !player.subMenu;
+            Upgradeui.SetActive(false);
+            pauseMenu.SetActive(true);
+        }
     }
 
 

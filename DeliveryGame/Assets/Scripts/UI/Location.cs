@@ -9,9 +9,6 @@ public class Location : MonoBehaviour
 
     public Text time;
     public PlayerInfo player;
-    //public GameObject ui;
-
-    //public bool started;
 
     // Start is called before the first frame update
     void Start()
