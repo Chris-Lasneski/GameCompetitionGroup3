@@ -16,12 +16,6 @@ public class QuestUI : MonoBehaviour
     private float potentialReward;
     public bool started;
 
-    public void MissionInfo()
-    {
-        //start = missionDetails.startLocation;
-    }
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,16 +28,6 @@ public class QuestUI : MonoBehaviour
         end = MissionController.mission.endLocation;
         estimate = MissionController.mission.estimatedTime;
         potentialReward = MissionController.mission.reward;
-        //started = MissionController.isStarted;
-
-        //if (started)
-        //{
-        //    ui.SetActive(true);
-        //}
-        //else if (!started)
-        //{
-        //    ui.SetActive(false);
-        //}
 
         questDescription.text = "Mission Goal: " + end + System.Environment.NewLine;
         questDescription.text += "Estimated Delivery Time: " + estimate + System.Environment.NewLine;

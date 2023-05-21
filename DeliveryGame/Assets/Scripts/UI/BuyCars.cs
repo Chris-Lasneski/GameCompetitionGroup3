@@ -9,6 +9,9 @@ public class BuyCars : MonoBehaviour
 
     private GameObject car;
 
+    public GameObject selfMenu;
+    public GameObject pauseMenu;
+
     public Button SedanB;
     public Button HatchB;
     public Button SportsB;
@@ -32,10 +35,15 @@ public class BuyCars : MonoBehaviour
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
-
-    //}
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && player.subMenu && selfMenu.activeSelf)
+        {
+            player.subMenu = !player.subMenu;
+            selfMenu.SetActive(false);
+            pauseMenu.SetActive(true);
+        }
+    }
 
     public void buyCar(int i)
     {
@@ -104,7 +112,7 @@ public class BuyCars : MonoBehaviour
                 }
             case 6:
                 {
-                    if(player.Money >= 4250 && player.pickupOwn)
+                    if(player.Money >= 4250 && !player.pickupOwn)
                     {
                         player.Money -= 4250;
                         player.pickupOwn = !player.pickupOwn;
@@ -125,8 +133,8 @@ public class BuyCars : MonoBehaviour
         // should set current car to inactive, switch current car to new car and set to active
         player.currentCar.SetActive(false);
         // give new car the previous cars position and rotation
-        v.transform.position = player.currentCar.transform.position;
-        v.transform.rotation = player.currentCar.transform.rotation;
+        //v.transform.position = player.currentCar.transform.position;
+        //v.transform.rotation = player.currentCar.transform.rotation;
         player.currentCar = v;
         player.currentCar.SetActive(true);
     }

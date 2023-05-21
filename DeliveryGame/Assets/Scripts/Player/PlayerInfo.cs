@@ -10,6 +10,7 @@ public class PlayerInfo : MonoBehaviour
     // currently set for testing purposes will need to be changed for final value.
     public float Money = 20000f;
     public bool paused = false;
+    public bool subMenu = false;
 
     [SerializeField] public GameObject sedan;
     [SerializeField] public GameObject hatchback;
@@ -40,6 +41,52 @@ public class PlayerInfo : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        // moving updating other cars here, should help reduce some lag. not a good solution but it'll work for now.
+        if (currentCar != sedan)
+        {
+            sedan.transform.position = currentCar.transform.position;
+            sedan.transform.rotation = currentCar.transform.rotation;
+        }
+
+        if (currentCar != hatchback)
+        {
+            hatchback.transform.position = currentCar.transform.position;
+            hatchback.transform.rotation = currentCar.transform.rotation;
+        }
+
+        if (currentCar != pickup)
+        {
+            pickup.transform.position = currentCar.transform.position;
+            pickup.transform.rotation = currentCar.transform.rotation;
+        }
+
+        if (currentCar != sports)
+        {
+            sports.transform.position = currentCar.transform.position;
+            sports.transform.rotation = currentCar.transform.rotation;
+        }
+
+        if (currentCar != muscle)
+        {
+            muscle.transform.position = currentCar.transform.position;
+            muscle.transform.rotation = currentCar.transform.rotation;
+        }
+
+        if (currentCar != suv)
+        {
+            suv.transform.position = currentCar.transform.position;
+            suv.transform.rotation= currentCar.transform.rotation;
+        }
+
+        if (currentCar != van)
+        {
+            van.transform.position = currentCar.transform.position;
+            van.transform.rotation = currentCar.transform.rotation;
+        }
+    }
+
+    public void switchSubMenu()
+    {
+        subMenu = !subMenu;
     }
 }
