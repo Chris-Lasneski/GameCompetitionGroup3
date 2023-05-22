@@ -122,6 +122,7 @@ public class Map {
                 IntersectionInfo info = new IntersectionInfo();
                 info.pos = placed;
                 info.intersectionType = getIntersectionFromPerm(xCount, yCount, perm);
+                info.isOpposite = (xCount + yCount) % 2 == 0;
 
                 intersections.Add(info);
 

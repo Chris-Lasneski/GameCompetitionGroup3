@@ -74,6 +74,9 @@ public class WorldRenderer : MonoBehaviour
                 }
             }
         }
+
+        //update stoplight toggle
+        IntersectionBehavior.addTime(Time.deltaTime);
     }
 
     private void FixedUpdate() {
@@ -151,7 +154,10 @@ public class WorldRenderer : MonoBehaviour
 
         GameObject ret = Instantiate(intersectionPfb[i.intersectionType], pos, new Quaternion(), t);
 
-        return ret.AddComponent<IntersectionBehavior>();
+        IntersectionBehavior ib = ret.GetComponent<IntersectionBehavior>();
+        ib.set(i.isOpposite);
+
+        return ib;
     }
 
     public static Vector3 Between(RoadInfo e) {
