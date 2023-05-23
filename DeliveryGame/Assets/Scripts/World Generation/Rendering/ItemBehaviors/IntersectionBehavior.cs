@@ -21,12 +21,6 @@ public class IntersectionBehavior : MonoBehaviour
         }
     }
 	void Start(){
-		
-		obstacle1.SetActive(false);
-		obstacle2.SetActive(false);
-		
-		obstacle3.SetActive(true);
-		obstacle4.SetActive(true);
 	
 	}	
 
@@ -55,7 +49,14 @@ public class IntersectionBehavior : MonoBehaviour
         this.oppositeToggle = oppositeToggle;
         lightState = oppositeToggle ? toggle ? 0 : elapsedTime <= greenTime ? 2 : 1 : toggle ? elapsedTime <= greenTime ? 2 : 1 : 0;
         oppositeLightState = oppositeToggle ? toggle ? elapsedTime <= greenTime ? 2 : 1 : 0 : toggle ? 0 : elapsedTime <= greenTime ? 2 : 1;
-        setLightState(); 
+
+        obstacle1.SetActive(!oppositeToggle);
+        obstacle2.SetActive(!oppositeToggle);
+
+        obstacle3.SetActive(oppositeToggle);
+        obstacle4.SetActive(oppositeToggle);
+        setLightState();
+        setOppositeLightState();
     }
 
     private void Update() {
@@ -66,21 +67,29 @@ public class IntersectionBehavior : MonoBehaviour
             if (!toggle) {
                 int newLightState = elapsedTime <= greenTime ? 2 : 1;
                 int newOppositeLightState = 0;
-                if(lightState != newLightState || oppositeLightState != newOppositeLightState) {
+                if (lightState != newLightState) {
                     lightState = newLightState;
-                    oppositeLightState = newOppositeLightState;
                     setLightState();
-				
+
+                }
+                if (oppositeLightState != newOppositeLightState) {
+                    oppositeLightState = newOppositeLightState;
+                    setOppositeLightState();
+
                 }
             }
             else {
                 int newLightState = 0;
                 int newOppositeLightState = elapsedTime <= greenTime ? 2 : 1;
-                if (lightState != newLightState || oppositeLightState != newOppositeLightState) {
+                if (lightState != newLightState) {
                     lightState = newLightState;
-                    oppositeLightState = newOppositeLightState;
                     setLightState();
-					
+
+                }
+                if (oppositeLightState != newOppositeLightState) {
+                    oppositeLightState = newOppositeLightState;
+                    setOppositeLightState();
+
                 }
             }
         }
@@ -89,19 +98,26 @@ public class IntersectionBehavior : MonoBehaviour
             if (toggle) {
                 int newLightState = elapsedTime <= greenTime ? 2 : 1;
                 int newOppositeLightState = 0;
-                if (lightState != newLightState || oppositeLightState != newOppositeLightState) {
+                if (lightState != newLightState) {
                     lightState = newLightState;
-                    oppositeLightState = newOppositeLightState;
                     setLightState();
+                }
+                if (oppositeLightState != newOppositeLightState) {
+                    oppositeLightState = newOppositeLightState;
+                    setOppositeLightState();
                 }
             }
             else {
                 int newLightState = 0;
                 int newOppositeLightState = elapsedTime <= greenTime ? 2 : 1;
-                if (lightState != newLightState || oppositeLightState != newOppositeLightState) {
+                if (lightState != newLightState) {
                     lightState = newLightState;
-                    oppositeLightState = newOppositeLightState;
                     setLightState();
+                }
+
+                if (oppositeLightState != newOppositeLightState) {
+                    oppositeLightState = newOppositeLightState;
+                    setOppositeLightState();
                 }
             }
         }
@@ -116,25 +132,25 @@ public class IntersectionBehavior : MonoBehaviour
 	}
 
     private void setLightState() {
-					
+
         if (lightState == 0) { //red light
-		
+
             redLights[0].SetActive(true);
             redLights[1].SetActive(true);
-            foreach (GameObject detector in detectors) 
+            foreach (GameObject detector in detectors)
                 detector.SetActive(true);
             yellowLights[0].SetActive(false);
             yellowLights[1].SetActive(false);
             greenLights[0].SetActive(false);
             greenLights[1].SetActive(false);
-			toggleObstacles();
+            toggleObstacles();
 
         }
         else
         if (lightState == 1) { //yellow light
             redLights[0].SetActive(false);
             redLights[1].SetActive(false);
-            foreach (GameObject detector in detectors) 
+            foreach (GameObject detector in detectors)
                 detector.SetActive(false);
             yellowLights[0].SetActive(true);
             yellowLights[1].SetActive(true);
@@ -145,13 +161,17 @@ public class IntersectionBehavior : MonoBehaviour
         if (lightState == 2) { //green light
             redLights[0].SetActive(false);
             redLights[1].SetActive(false);
-            foreach (GameObject detector in detectors) 
+            foreach (GameObject detector in detectors)
                 detector.SetActive(false);
             yellowLights[0].SetActive(false);
             yellowLights[1].SetActive(false);
             greenLights[0].SetActive(true);
             greenLights[1].SetActive(true);
         }
+
+    }
+
+    private void setOppositeLightState() {
 
         if (oppositeLightState == 0) { //red light
             oppositeRedLights[0].SetActive(true);
@@ -162,7 +182,7 @@ public class IntersectionBehavior : MonoBehaviour
             oppositeYellowLights[1].SetActive(false);
             oppositeGreenLights[0].SetActive(false);
             oppositeGreenLights[1].SetActive(false);
-			//toggleObstacles();
+            toggleObstacles();
 
         }
         else
