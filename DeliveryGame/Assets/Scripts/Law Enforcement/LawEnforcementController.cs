@@ -11,4 +11,10 @@ public class LawEnforcementController
 
         playerInfo.Money -= LawEnforcementConstants.CameraSpeedCost;
     }
+
+    public static void reportRed() {
+        //Debug.Log($"Ticket for going {speed} Mph reported by camera");
+
+        playerInfo.Money -= LawEnforcementConstants.CameraRedCost;
+    }
 }
