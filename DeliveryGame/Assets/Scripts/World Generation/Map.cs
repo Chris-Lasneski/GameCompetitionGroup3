@@ -27,6 +27,10 @@ public class Map {
             -(WorldGenerationConstants.roadWidth + WorldGenerationConstants.buildingWidth) / 2,
             (WorldGenerationConstants.roadWidth + WorldGenerationConstants.buildingWidth) / 2,
         };
+    private static float[][] rotation = new float[][] {
+        new float[] {0, 90},
+        new float[] {270, 180}
+    };
     private static float roadLength = WorldGenerationConstants.roadLength;
     private static int buildingsPerRoad = WorldGenerationConstants.buildingsPerRoad;
     private static int chunkSize = WorldGenerationConstants.chunkSize;
@@ -108,7 +112,7 @@ public class Map {
         float maxX = (X + 1) * chunkSize;
         float maxY = (Y + 1) * chunkSize;
 
-        int[][] perm = Math.generatePerm(X, Y, intersectionPermSize);
+        int[][] perm = WorldGenerationMath.generatePerm(X, Y, intersectionPermSize);
         int xCount = 0;
         int yCount = 0;
 
@@ -168,7 +172,7 @@ public class Map {
         int maxX = (X + 1) * WorldGenerationConstants.chunkBuildingWidth - 1;
         int maxY = (Y + 1) * WorldGenerationConstants.chunkBuildingWidth - 1;
 
-        int [][] currentPerm = Math.generatePerm(X, Y, buildingPermSize);
+        int [][] currentPerm = WorldGenerationMath.generatePerm(X, Y, buildingPermSize);
 
         for (int x = minX; x < maxX; x++) {
             for (int y = minY; y < maxY; y++) {
@@ -183,7 +187,7 @@ public class Map {
         int[][] externalPerm;
 
         displacement = externalIndexToDirection[0];
-        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
+        externalPerm = WorldGenerationMath.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
         for (int x = minX; x < maxX; x++) {
             externalBuildings[0].Add(getBuilding(x, maxY + 0, externalPerm));
             externalBuildings[0].Add(getBuilding(x, maxY + 1, externalPerm));
@@ -193,7 +197,7 @@ public class Map {
         }
 
         displacement = externalIndexToDirection[2];
-        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
+        externalPerm = WorldGenerationMath.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
         for (int y = minY; y < maxY; y++) {
             externalBuildings[2].Add(getBuilding(maxX, y + 0, externalPerm));
             externalBuildings[2].Add(getBuilding(maxX + 1, y, externalPerm));
@@ -203,14 +207,14 @@ public class Map {
         }
 
         displacement = externalIndexToDirection[1];
-        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
+        externalPerm = WorldGenerationMath.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
         externalBuildings[1].Add(getBuilding(maxX + 0, maxY + 0, externalPerm));
         externalBuildings[1].Add(getBuilding(maxX + 1, maxY + 0, externalPerm));
         externalBuildings[1].Add(getBuilding(maxX + 0, maxY + 1, externalPerm));
         externalBuildings[1].Add(getBuilding(maxX + 1, maxY + 1, externalPerm));
 
         displacement = externalIndexToDirection[2];
-        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
+        externalPerm = WorldGenerationMath.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
         externalBuildings[3].Add(getBuilding(maxX + 0, minY - 1, externalPerm));
         externalBuildings[3].Add(getBuilding(maxX + 1, minY - 1, externalPerm));
         externalBuildings[3].Add(getBuilding(maxX + 0, minY - 2, externalPerm));
@@ -222,23 +226,18 @@ public class Map {
         externalBuildings[5].Add(getBuilding(minX - 2, minY - 2, currentPerm));
 
         displacement = externalIndexToDirection[0];
-        externalPerm = Math.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
+        externalPerm = WorldGenerationMath.generatePerm(X + displacement.x, Y + displacement.y, buildingPermSize);
         externalBuildings[7].Add(getBuilding(minX - 1, maxY + 0, externalPerm));
         externalBuildings[7].Add(getBuilding(minX - 2, maxY + 0, externalPerm));
         externalBuildings[7].Add(getBuilding(minX - 1, maxY + 1, externalPerm));
         externalBuildings[7].Add(getBuilding(minX - 2, maxY + 1, externalPerm));
     }
 
-    private static float[][] rotation = new float[][] {
-        new float[] {0, 90},
-        new float[] {270, 180}
-    };
-
     private static BuildingInfo getBuilding(int x, int y, int[][] perm) {
         BuildingInfo buildingInfo = new BuildingInfo();
 
-        int displaceX = Math.mod(x, buildingsPerRoad);
-        int displaceY = Math.mod(y, buildingsPerRoad);
+        int displaceX = WorldGenerationMath.mod(x, buildingsPerRoad);
+        int displaceY = WorldGenerationMath.mod(y, buildingsPerRoad);
 
         int rotXInd = displaceX % 2;
         int rotYInd = displaceY % 2;
@@ -259,14 +258,14 @@ public class Map {
 
     private static int getBuildingFromPerm(int x, int y, int[][] perm) {
 
-        int index = perm[Math.mod(x, buildingPermSize)][Math.mod(y, buildingPermSize)] % buildingCount;
+        int index = perm[WorldGenerationMath.mod(x, buildingPermSize)][WorldGenerationMath.mod(y, buildingPermSize)] % buildingCount;
 
         return buildingChoices[index];
     }
 
     private static int getIntersectionFromPerm(int x, int y, int[][] perm) {
 
-        int index = perm[Math.mod(x, intersectionPermSize)][Math.mod(y, intersectionPermSize)] % intersectionCount;
+        int index = perm[WorldGenerationMath.mod(x, intersectionPermSize)][WorldGenerationMath.mod(y, intersectionPermSize)] % intersectionCount;
         return intersectionChoices[index];
     }
 }

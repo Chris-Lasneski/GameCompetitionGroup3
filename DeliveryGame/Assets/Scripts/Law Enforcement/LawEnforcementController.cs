@@ -6,9 +6,11 @@ public class LawEnforcementController
 {
     public static PlayerInfo playerInfo;
 
-    public static void reportTicket(float speed) {
-        //Debug.Log($"Ticket for going {speed} Mph reported by camera");
-
+    public static void reportSpeeding(float speed) {
         playerInfo.Money -= LawEnforcementConstants.CameraSpeedCost;
+    }
+
+    public static void reportRed() {
+        playerInfo.Money -= LawEnforcementConstants.CameraRedCost;
     }
 }

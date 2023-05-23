@@ -85,8 +85,3 @@ public class IntersectionInfo {
     public bool isOpposite;
 }
 
-//public class IntersectionInfo {
-//    public Vector2 pos;
-//    public int intersectionType;
-//}
-
