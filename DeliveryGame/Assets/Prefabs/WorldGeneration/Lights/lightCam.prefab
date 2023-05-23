@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 1051265047992187224}
   - component: {fileID: 7188055370132878512}
   - component: {fileID: 7625665721114589018}
+  - component: {fileID: 3806393523523156965}
   m_Layer: 2
   m_Name: detector
   m_TagString: Untagged
@@ -189,6 +190,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31373f6b8b1421b4dbeedaa7f0aaf376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3806393523523156965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691108394025026613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &3461961484883032601
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4852539956701843719}
+  - component: {fileID: 4319399993833955896}
   m_Layer: 0
   m_Name: lightCam
   m_TagString: Untagged
@@ -420,6 +438,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4319399993833955896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5196168592334916541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5527935946977134565
 GameObject:
   m_ObjectHideFlags: 0
