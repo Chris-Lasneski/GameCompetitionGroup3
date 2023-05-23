@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Unity.AI.Navigation;
 
 public class IntersectionBehavior : MonoBehaviour
 {
@@ -8,14 +10,25 @@ public class IntersectionBehavior : MonoBehaviour
     private static float elapsedTime = 0;
     private static float greenTime = 8;
     private static float yellowTime = 2;
+	
 
     public static void addTime(float dt) {
         elapsedTime += dt;
         if (elapsedTime > greenTime + yellowTime) {
             elapsedTime -= greenTime + yellowTime;
             toggle = !toggle;
+
         }
     }
+	void Start(){
+		
+		obstacle1.SetActive(false);
+		obstacle2.SetActive(false);
+		
+		obstacle3.SetActive(true);
+		obstacle4.SetActive(true);
+	
+	}	
 
 
     private bool oppositeToggle;
@@ -29,6 +42,11 @@ public class IntersectionBehavior : MonoBehaviour
     public GameObject[] oppositeGreenLights;
     public GameObject[] oppositeYellowLights;
     public GameObject[] oppositeRedLights;
+	public GameObject obstacle1;
+	public GameObject obstacle2;
+	public GameObject obstacle3;
+	public GameObject obstacle4;
+	
 
     public void set(bool oppositeToggle) {
         this.oppositeToggle = oppositeToggle;
@@ -38,7 +56,9 @@ public class IntersectionBehavior : MonoBehaviour
     }
 
     private void Update() {
+		
         if (oppositeToggle) {
+			
             //red when toggle is true
             if (!toggle) {
                 int newLightState = elapsedTime <= greenTime ? 2 : 1;
@@ -47,6 +67,7 @@ public class IntersectionBehavior : MonoBehaviour
                     lightState = newLightState;
                     oppositeLightState = newOppositeLightState;
                     setLightState();
+				
                 }
             }
             else {
@@ -56,6 +77,7 @@ public class IntersectionBehavior : MonoBehaviour
                     lightState = newLightState;
                     oppositeLightState = newOppositeLightState;
                     setLightState();
+					
                 }
             }
         }
@@ -81,15 +103,27 @@ public class IntersectionBehavior : MonoBehaviour
             }
         }
     }
+	void toggleObstacles(){
+		
+		obstacle1.SetActive(!obstacle1.activeSelf);
+		obstacle2.SetActive(!obstacle2.activeSelf);
+		obstacle3.SetActive(!obstacle3.activeSelf);
+		obstacle4.SetActive(!obstacle4.activeSelf);
+
+	}
 
     private void setLightState() {
+					
         if (lightState == 0) { //red light
+		
             redLights[0].SetActive(true);
             redLights[1].SetActive(true);
             yellowLights[0].SetActive(false);
             yellowLights[1].SetActive(false);
             greenLights[0].SetActive(false);
             greenLights[1].SetActive(false);
+			toggleObstacles();
+
         }
         else
         if (lightState == 1) { //yellow light
@@ -117,6 +151,8 @@ public class IntersectionBehavior : MonoBehaviour
             oppositeYellowLights[1].SetActive(false);
             oppositeGreenLights[0].SetActive(false);
             oppositeGreenLights[1].SetActive(false);
+			//toggleObstacles();
+
         }
         else
         if (oppositeLightState == 1) { //yellow light
