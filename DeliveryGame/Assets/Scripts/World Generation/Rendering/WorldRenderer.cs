@@ -40,8 +40,8 @@ public class WorldRenderer : MonoBehaviour
     void Update()
     {
         Vector3 pos = playerInfo.currentCar.transform.position;
-        int posX = (int)pos.x - Math.mod((int)pos.x, WorldGenerationConstants.chunkSize);
-        int posY = (int)pos.z - Math.mod((int)pos.z, WorldGenerationConstants.chunkSize);
+        int posX = (int)pos.x - WorldGenerationMath.mod((int)pos.x, WorldGenerationConstants.chunkSize);
+        int posY = (int)pos.z - WorldGenerationMath.mod((int)pos.z, WorldGenerationConstants.chunkSize);
 
 
         Vector2Int chpos = new Vector2Int(posX / WorldGenerationConstants.chunkSize, posY / WorldGenerationConstants.chunkSize);
