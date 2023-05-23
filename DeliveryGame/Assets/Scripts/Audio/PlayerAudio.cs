@@ -25,7 +25,7 @@ public class PlayerAudio : MonoBehaviour
     {
         velocity = car.velocity.magnitude * 2.237f;
 
-        if(velocity < maxFirst)
+        if (velocity < maxFirst)
             playerEngine.pitch = velocity/maxFirst + 1;
         else
             playerEngine.pitch = (((velocity - maxFirst) % gearStep) / gearStep) + 2;
