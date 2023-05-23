@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2437426526213410407}
   - component: {fileID: 6962175416111791534}
   - component: {fileID: 3224142372418825051}
+  - component: {fileID: 703317150813723578}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -56,6 +57,9 @@ MonoBehaviour:
   SensitivitySlider: {fileID: 0}
   SensitivitySliderText: {fileID: 0}
   sensitivityValue: 0
+  player: {fileID: 0}
+  selfMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!114 &6962175416111791534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Money: 20000
   paused: 0
+  subMenu: 0
   sedan: {fileID: 0}
   hatchback: {fileID: 0}
   sports: {fileID: 0}
@@ -99,6 +104,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 0}
   paused: 0
+  player: {fileID: 0}
+--- !u!114 &703317150813723578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564835935409548630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d130274360ae0724895044b2978486b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInfo: {fileID: 6962175416111791534}
 --- !u!1001 &2520367126501092761
 PrefabInstance:
   m_ObjectHideFlags: 0
