@@ -380,7 +380,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 448
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: ad0e19b78dca2af4a90bd6720bc2c12d, type: 2}
   m_TargetDisplay: 0
@@ -392,37 +392,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &341821891
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 341821892}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &341821892
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341821891}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 176.6879, y: 0.28530025, z: 298.96756}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &510746146
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +524,7 @@ MonoBehaviour:
   - {fileID: 2251614842448880275, guid: 7b0af9131deea80469b7ee5479ddcd07, type: 3}
   - {fileID: 2251614842448880275, guid: cbb050e2624579f4baf667d02cd261b6, type: 3}
   - {fileID: 2251614842448880275, guid: f3544a66608443043bae8b1bf5e32e32, type: 3}
-  intersectionWeights: 0100000001000000010000000100000001000000
+  intersectionWeights: 0100000000000000000000000000000000000000
   roadPfb: {fileID: 5585452976917657863, guid: 251a66d052d6e344181132a8a38333b4, type: 3}
   emptyPfb: {fileID: 8544357369958995791, guid: f6500cc3316c7504f9c45987c0740e08, type: 3}
   beaconPfb: {fileID: 5873243313356892659, guid: 5407872f4265f1e4e8d65ed1778eece0, type: 3}
