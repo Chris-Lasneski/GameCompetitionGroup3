@@ -9,6 +9,8 @@ public class nav : MonoBehaviour
 	public GameObject npcForward;
 	public GameObject npcBackward;
 	public WorldRenderer world;
+	public PlayerInfo player;
+
 	public int initialNPCs=50;
 	
 	int frame=0;
@@ -42,13 +44,14 @@ public class nav : MonoBehaviour
 	}
 	void generateNPC(){
 		
-		ChunkData chunk=world.chunkList[world.chunkPos].chunkData;
-		List<BuildingInfo> buildings=chunk.missionBuildings;
 		int rand1, rand2, rand3, rand4;
+		int roadSize = (int)WorldGenerationConstants.roadLength;
         GameObject newNpc;
-		GameObject player=GameObject.Find("Player");
-		int playerIntersectionX=(((int)player.transform.position.x)/90)*90;
-		int playerIntersectionZ=(((int)player.transform.position.z)/90)*90;
+		GameObject playerRB = player.currentCar;//GameObject.Find("Player");
+
+
+        int playerIntersectionX=(((int)playerRB.transform.position.x)/ roadSize) * roadSize;
+		int playerIntersectionZ=(((int)playerRB.transform.position.z)/ roadSize) * roadSize;
 		int newX,newZ;
 		NavMeshAgent a;
 		//Debug.Log(randomPos1+""+hit1.position+""+randomPos2+""+hit2.position);
@@ -60,12 +63,12 @@ public class nav : MonoBehaviour
 			//if (Random.value > 0.5){
 			//newNpc=Instantiate(npcForward, hit1.position, Quaternion.identity);
 	
-			rand1=Random.Range(1,5);
-			rand2=Random.Range(1,5);
-			rand3=Random.Range(1,5);
-			rand4=Random.Range(1,5);
-			newX=playerIntersectionX+90*rand1+3;
-			newZ=playerIntersectionZ+90*rand2+Random.Range(20,70);
+			rand1=Random.Range(1, 5);
+			rand2=Random.Range(1, 5);
+			rand3=Random.Range(1, 5);
+			rand4=Random.Range(1, 5);
+			newX=playerIntersectionX + roadSize * rand1 + 3 - 3 * roadSize;
+			newZ=playerIntersectionZ + roadSize * rand2 + Random.Range(20,70) - 3 * roadSize;
 			bool forward=Random.value>0.5;
 			if (forward){
 				newNpc=Instantiate(npcForward,new Vector3(newX,0,newZ), Quaternion.identity);
@@ -80,10 +83,10 @@ public class nav : MonoBehaviour
 			newNpc.SetActive(true);
 			a=newNpc.transform.GetChild(0).GetComponent<NavMeshAgent>();
 			if (forward){
-				a.SetDestination(new Vector3(newX+rand3*90,0,newZ+rand4*90));
+				a.SetDestination(new Vector3(newX + rand3 * roadSize, 0, newZ + rand4 * roadSize));
 			}
 			else{
-				a.SetDestination(new Vector3(newX-rand3*90,0,newZ-rand4*90));
+				a.SetDestination(new Vector3(newX - rand3 * roadSize, 0, newZ  -rand4 * roadSize));
 			}
 				
 			//newNpc.GetComponent<NavMeshAgent>().SetDestination(new Vector3((rand1+rand3)*90,0,(rand2+rand4)*90));

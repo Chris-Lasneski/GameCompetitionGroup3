@@ -16,13 +16,12 @@ public class PlayerAudio : MonoBehaviour
     void Start()
     {
         playerEngine = GetComponent<AudioSource>();
-        car = playerInfo.currentCar.GetComponent<Rigidbody>();
         playerEngine.pitch = 1;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        car = playerInfo.currentCar.GetComponent<Rigidbody>();
         velocity = car.velocity.magnitude * 2.237f;
 
         if (velocity < maxFirst)

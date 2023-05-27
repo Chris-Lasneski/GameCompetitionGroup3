@@ -186,12 +186,20 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4754427882254594858, guid: a2a2604e044af2e4788e6f2cbbdc8b39, type: 3}
+      propertyPath: m_Height
+      value: 2.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754427882254594858, guid: a2a2604e044af2e4788e6f2cbbdc8b39, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4754427882254594858, guid: a2a2604e044af2e4788e6f2cbbdc8b39, type: 3}
       propertyPath: m_AutoRepath
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754427882254594858, guid: a2a2604e044af2e4788e6f2cbbdc8b39, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4754427884090083412, guid: a2a2604e044af2e4788e6f2cbbdc8b39, type: 3}
       propertyPath: m_RootOrder
@@ -524,7 +532,7 @@ MonoBehaviour:
   - {fileID: 2251614842448880275, guid: 7b0af9131deea80469b7ee5479ddcd07, type: 3}
   - {fileID: 2251614842448880275, guid: cbb050e2624579f4baf667d02cd261b6, type: 3}
   - {fileID: 2251614842448880275, guid: f3544a66608443043bae8b1bf5e32e32, type: 3}
-  intersectionWeights: 0100000000000000000000000000000000000000
+  intersectionWeights: 0800000001000000010000000100000001000000
   roadPfb: {fileID: 5585452976917657863, guid: 251a66d052d6e344181132a8a38333b4, type: 3}
   emptyPfb: {fileID: 8544357369958995791, guid: f6500cc3316c7504f9c45987c0740e08, type: 3}
   beaconPfb: {fileID: 5873243313356892659, guid: 5407872f4265f1e4e8d65ed1778eece0, type: 3}
@@ -1520,7 +1528,7 @@ PrefabInstance:
       objectReference: {fileID: 210945044}
     - target: {fileID: 6962175416111791534, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
       propertyPath: Money
-      value: 20000
+      value: 200000
       objectReference: {fileID: 0}
     - target: {fileID: 6962175416111791534, guid: 2a6820c03f33e40439cc44cb3fcd4101, type: 3}
       propertyPath: sedan
@@ -1652,6 +1660,7 @@ MonoBehaviour:
   npcForward: {fileID: 212319539}
   npcBackward: {fileID: 1612991414}
   world: {fileID: 516288520}
+  player: {fileID: 855175298}
   initialNPCs: 50
 --- !u!1001 &1612991412
 PrefabInstance:
@@ -1685,8 +1694,16 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7214777117786618976, guid: 2d35bcde247a6714e962e7ead2802791, type: 3}
+      propertyPath: m_Height
+      value: 2.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214777117786618976, guid: 2d35bcde247a6714e962e7ead2802791, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214777117786618976, guid: 2d35bcde247a6714e962e7ead2802791, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7214777117786618976, guid: 2d35bcde247a6714e962e7ead2802791, type: 3}
       propertyPath: m_WalkableMask
@@ -1706,15 +1723,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7214777118744029997, guid: 2d35bcde247a6714e962e7ead2802791, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.031971
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7214777118744029997, guid: 2d35bcde247a6714e962e7ead2802791, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6388845
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7214777118744029997, guid: 2d35bcde247a6714e962e7ead2802791, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.6183434
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7214777118744029997, guid: 2d35bcde247a6714e962e7ead2802791, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1798,6 +1815,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 855175298}
+    - target: {fileID: 1235146467, guid: 509aa16bb71b27a4ab95ce8284644ca7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235146467, guid: 509aa16bb71b27a4ab95ce8284644ca7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235146467, guid: 509aa16bb71b27a4ab95ce8284644ca7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 855175298}
+    - target: {fileID: 1235146467, guid: 509aa16bb71b27a4ab95ce8284644ca7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235146467, guid: 509aa16bb71b27a4ab95ce8284644ca7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: switchSubMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235146467, guid: 509aa16bb71b27a4ab95ce8284644ca7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: PlayerInfo, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235146467, guid: 509aa16bb71b27a4ab95ce8284644ca7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1586561777, guid: 509aa16bb71b27a4ab95ce8284644ca7, type: 3}
       propertyPath: player
       value: 
@@ -1908,7 +1953,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781804586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.031971, y: 2.6388845, z: 17.618343}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
