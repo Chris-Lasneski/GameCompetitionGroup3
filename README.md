@@ -16,8 +16,8 @@ Delta Drivers was built in the Unity Game Engine.
 - Traffic lights, speed limit, and law enforcement
 
 # How to Use
-To play:    Download the files in the exe folder and run the DeliveryGame.exe file.
-To code:    clone the repo and open the "DeliveryGame" folder in unity. You will need Unity version 2021.3.11f1 installed.
+To play: Download the files in the exe folder and run the DeliveryGame.exe file.
+To code: clone the repo and open the "DeliveryGame" folder in unity. You will need Unity version 2021.3.11f1 installed.
 
 # How to Play
 You've just entered the world as a delivery driver to make some money! But how do you drive?
