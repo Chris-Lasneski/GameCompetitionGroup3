@@ -3,7 +3,8 @@ In this repository, you will find the unity code for the Delta Drivers game, and
 ![image](https://github.com/Chris-Lasneski/GameCompetitionGroup3/assets/72107036/03df76c6-a4aa-4fd5-8b58-e699ed5c5be5)
 
 # Build Status
-Delta Drivers is in a working state. There are no known game-breaking bugs or errors. Traffic lights are not working but will soon.
+Known bugs:
+NPC behavior is not consistant when the player has driven far from the origin
 
 # Framework
 Delta Drivers was built in the Unity Game Engine.
@@ -15,7 +16,8 @@ Delta Drivers was built in the Unity Game Engine.
 - Traffic lights, speed limit, and law enforcement
 
 # How to Use
-Download the files in the exe folder and run the DeliveryGame.exe file.
+To play:    Download the files in the exe folder and run the DeliveryGame.exe file.
+To code:    clone the repo and open the "DeliveryGame" folder in unity. You will need Unity version 2021.3.11f1 installed.
 
 # How to Play
 You've just entered the world as a delivery driver to make some money! But how do you drive?
