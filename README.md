@@ -17,6 +17,7 @@ Delta Drivers was built in the Unity Game Engine.
 
 # How to Use
 To play: Download the files in the exe folder and run the DeliveryGame.exe file.
+
 To code: clone the repo and open the "DeliveryGame" folder in unity. You will need Unity version 2021.3.11f1 installed.
 
 # How to Play
